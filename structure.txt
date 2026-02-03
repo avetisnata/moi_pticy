@@ -1,0 +1,3 @@
+images/files.txt
+data/files.txt
+docs/files.txt
