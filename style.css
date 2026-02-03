@@ -54,5 +54,10 @@ tr:hover { background: #f8f9fa; }
     th:nth-child(3), td:nth-child(3) { display: none; } /* Вид - скрыть */
     th:nth-child(5), td:nth-child(5) { display: none; } /* Дата рождения - скрыть */
     .action-btn { padding: 6px 8px; font-size: 0.85em; margin: 2px; }
+
+        header h1 { font-size: 1.5em; margin-bottom: 5px; }
+    .stats { font-size: 0.9em; }
+    .stats span { margin: 0 10px; padding: 6px 10px; }
 }
+
 
