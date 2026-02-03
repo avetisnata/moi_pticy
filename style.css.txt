@@ -1,0 +1,50 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #87CEEB 0%, #98D8C8 100%); min-height: 100vh; }
+.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+header { background: white; border-radius: 20px; padding: 25px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+header h1 { font-size: 2.5em; color: #2c5aa0; margin-bottom: 10px; }
+.stats { font-size: 1.2em; color: #666; }
+.stats span { margin: 0 20px; background: #f0f8ff; padding: 8px 15px; border-radius: 20px; }
+
+.tabs { display: flex; background: white; border-radius: 15px; padding: 5px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 20px; }
+.tab { flex: 1; padding: 15px 20px; border: none; background: transparent; font-size: 1.1em; cursor: pointer; border-radius: 10px; transition: all 0.3s; }
+.tab.active, .tab:hover { background: linear-gradient(135deg, #4CAF50, #45a049); color: white; }
+
+.tab-content { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: none; }
+.tab-content.active { display: block; }
+
+.controls { display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
+.controls input, .controls select { padding: 12px 15px; border: 2px solid #ddd; border-radius: 10px; font-size: 1em; }
+.controls button { padding: 12px 25px; background: linear-gradient(135deg, #4CAF50, #45a049); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 1em; transition: transform 0.2s; }
+.controls button:hover { transform: translateY(-2px); }
+
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { padding: 15px 12px; text-align: left; border-bottom: 1px solid #eee; }
+th { background: linear-gradient(135deg, #f8f9fa, #e9ecef); font-weight: 600; color: #333; }
+tr:hover { background: #f8f9fa; }
+.status-active { background: #d4edda; color: #155724; }
+.status-inactive { background: #f8d7da; color: #721c24; }
+.action-btn { padding: 5px 10px; margin: 0 3px; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9em; }
+.btn-edit { background: #007bff; color: white; }
+.btn-delete { background: #dc3545; color: white; }
+
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+.modal.active { display: flex; align-items: center; justify-content: center; }
+.modal-content { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 500px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.modal-content form { display: flex; flex-direction: column; gap: 15px; }
+.modal-content input, .modal-content select { padding: 12px; border: 2px solid #ddd; border-radius: 10px; }
+.modal-content button { padding: 12px; border: none; border-radius: 10px; cursor: pointer; font-size: 1em; }
+.modal-content button[type="submit"] { background: linear-gradient(135deg, #4CAF50, #45a049); color: white; }
+.modal-content button[type="button"] { background: #6c757d; color: white; }
+
+#calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+.calendar-day { background: white; padding: 20px; border-radius: 15px; text-align: center; cursor: pointer; transition: all 0.3s; }
+.calendar-day:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+.calendar-header { grid-column: 1 / -1; font-weight: bold; font-size: 1.3em; padding: 20px; background: linear-gradient(135deg, #2c5aa0, #4CAF50); color: white; border-radius: 15px; }
+
+@media (max-width: 768px) {
+    .tabs { flex-direction: column; }
+    .controls { flex-direction: column; align-items: stretch; }
+    table { font-size: 0.9em; }
+}

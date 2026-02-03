@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои Птицы - Учет птиц и пар</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐦 Мои Птицы</h1>
+            <div class="stats">
+                <span id="total-birds">Птиц: 0</span>
+                <span id="active-pairs">Пар: 0</span>
+                <span id="total-clutches">Кладок: 0</span>
+            </div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" data-tab="birds">Птицы</button>
+            <button class="tab" data-tab="pairs">Пары</button>
+            <button class="tab" data-tab="clutches">Кладки</button>
+            <button class="tab" data-tab="calendar">Календарь</button>
+            <button class="tab" data-tab="stats">Статистика</button>
+        </nav>
+
+        <main>
+            <!-- Вкладка Птицы -->
+            <div id="birds" class="tab-content active">
+                <div class="controls">
+                    <input type="text" id="bird-search" placeholder="Поиск по кольцу/имени">
+                    <button onclick="addBird()">➕ Добавить птицу</button>
+                    <button onclick="exportData('csv')">📥 Экспорт CSV</button>
+                </div>
+                <table id="birds-table">
+                    <thead>
+                        <tr>
+                            <th>Кольцо</th><th>Имя</th><th>Вид</th><th>Пол</th>
+                            <th>Дата рождения</th><th>Статус</th><th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Вкладка Пары -->
+            <div id="pairs" class="tab-content">
+                <div class="controls">
+                    <select id="male-select"></select>
+                    <select id="female-select"></select>
+                    <button onclick="createPair()">➕ Создать пару</button>
+                </div>
+                <table id="pairs-table">
+                    <thead>
+                        <tr>
+                            <th>Самец</th><th>Самка</th><th>Дата создания</th>
+                            <th>Статус</th><th>Кладки</th><th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Вкладка Кладки -->
+            <div id="clutches" class="tab-content">
+                <div class="controls">
+                    <select id="pair-select-clutch"></select>
+                    <button onclick="addClutch()">➕ Новая кладка</button>
+                </div>
+                <table id="clutches-table">
+                    <thead>
+                        <tr>
+                            <th>Пара</th><th>Дата кладки</th><th>Яиц</th>
+                            <th>Вылупилось</th><th>Дата вылупления</th><th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Вкладка Календарь -->
+            <div id="calendar" class="tab-content">
+                <div id="calendar-grid"></div>
+            </div>
+
+            <!-- Вкладка Статистика -->
+            <div id="stats" class="tab-content">
+                <div id="stats-content"></div>
+            </div>
+        </main>
+
+        <!-- Модальные окна -->
+        <div id="bird-modal" class="modal">
+            <div class="modal-content">
+                <h3 id="modal-title">Добавить птицу</h3>
+                <form id="bird-form">
+                    <input type="text" id="ring" placeholder="Кольцо *" required>
+                    <input type="text" id="name" placeholder="Имя">
+                    <input type="text" id="species" placeholder="Вид (Канарейка, Попугай...)">
+                    <select id="gender">
+                        <option value="">Пол *</option>
+                        <option value="♂">Самец</option>
+                        <option value="♀">Самка</option>
+                    </select>
+                    <input type="date" id="birthdate">
+                    <input type="text" id="color" placeholder="Цвет/мутация">
+                    <button type="submit">Сохранить</button>
+                    <button type="button" onclick="closeModal()">Отмена</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
