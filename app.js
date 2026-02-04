@@ -236,8 +236,7 @@ function addClutch() {
             number: clutchNumber,
                         ringNumbers: ringNumbers,
                         notes: clutchNotes
-                                };
-    
+pair ? pair.id : 'Удалена'    
     const pair = pairs.find(p => p.id == pairId);
     pair.clutches.push(clutch.id);
     clutches.push(clutch);
@@ -255,7 +254,7 @@ function renderClutches() {
         const row = tbody.insertRow();
         row.innerHTML = `
 <td>${clutch.number || '-'}</td>
-                        <td>${pair ? pair.id : 'Удалена'}</td>
+                        <td>${pair ? pair.number : 'Удалена'}</td>
             <td>${clutch.layDate}</td>
             <td>${clutch.eggs}</td>
             <td>${clutch.hatched}</td>
@@ -375,6 +374,7 @@ function editPair(id) {
         renderPairs();
     }
 }
+
 
 
 
