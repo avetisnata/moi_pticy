@@ -59,6 +59,55 @@ tr:hover { background: #f8f9fa; }
     .stats { font-size: 0.9em; }
     .stats span { margin: 0 5px; padding: 6px 8px; }}
 
+/* Стили для улучшенного поиска */
+.search-container {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #666;
+    pointer-events: none;
+}
+
+.search-container input {
+    padding-left: 45px !important;
+    padding-right: 40px !important;
+}
+
+.clear-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.clear-btn:hover {
+    color: #f44336;
+}
+
+.search-results {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+
 
 
 
