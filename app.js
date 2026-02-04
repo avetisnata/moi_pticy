@@ -50,6 +50,7 @@ function editBird(id) {
     document.getElementById('gender').value = bird.gender;
     document.getElementById('birthdate').value = bird.birthdate;
     document.getElementById('color').value = bird.color;
+        document.getElementById('notes').value = bird.notes || '';
     document.getElementById('bird-modal').classList.add('active');
 }
 
@@ -63,6 +64,7 @@ function saveBird(e) {
         gender: document.getElementById('gender').value,
         birthdate: document.getElementById('birthdate').value,
         color: document.getElementById('color').value,
+                notes: document.getElementById('notes').value,
         status: 'active'
     };
     
@@ -296,4 +298,5 @@ function deletePair(id) {
         renderPairs();
     }
 }
+
 
