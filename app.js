@@ -29,8 +29,7 @@ function setupEventListeners() {
 function switchTab(tabName) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    event.target.classList.add('active');
-    document.getElementById(tabName).classList.add('active');
+    document.querySelector(`.tab[data-tab="${tabName}"]`).classList.add('active');    document.getElementById(tabName).classList.add('active');
 }
 
 // ===== ПТИЦЫ =====
@@ -297,3 +296,4 @@ function deletePair(id) {
         renderPairs();
     }
 }
+
