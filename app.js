@@ -149,6 +149,8 @@ function renderBirds() {
 function createPair() {
     const maleId = document.getElementById('male-select').value;
     const femaleId = document.getElementById('female-select').value;
+        const pairNumber = document.getElementById('pair-number').value;
+        const pairColor = document.getElementById('pair-color').value;
     
     if (!maleId || !femaleId || maleId === femaleId) {
         alert('Выберите самца и самку!');
@@ -159,6 +161,8 @@ function createPair() {
         id: Date.now(),
         male: parseInt(maleId),
         female: parseInt(femaleId),
+                number: pairNumber,
+                color: pairColor,
         created: new Date().toISOString().split('T')[0],
         status: 'active',
         clutches: []
@@ -179,7 +183,9 @@ function renderPairs() {
         const female = birds.find(b => b.id === pair.female);
         const row = tbody.insertRow();
         row.innerHTML = `
-            <td>${male ? male.ring + ' (' + male.name + ')' : 'Удалена'}</td>
+<td>${pair.number || '-'}</td>
+            <td>${pair.color || '-'}</td>
+                        <td>${male ? male.ring + ' (' + male.name + ')' : 'Удалена'}</td>
             <td>${female ? female.ring + ' (' + female.name + ')' : 'Удалена'}</td>
             <td>${pair.created}</td>
             <td class="status-${pair.status}">${pair.status === 'active' ? 'Активна' : 'Неактивна'}</td>
@@ -320,14 +326,26 @@ function exportData(format) {
 }
 
 // Заглушки для других функций
-function editPair(id) { alert('Редактирование пар в разработке'); }
-function deletePair(id) { 
+function editPair(id) {
+    const pair = pairs.find(p => p.id === id);
+    if (!pair) return;
+    
+    const newNumber = prompt('Номер пары:', pair.number || '');
+    const newColor = prompt('Цвет метки:', pair.color || '');
+    
+    if (newNumber !== null) pair.number = newNumber;
+    if (newColor !== null) pair.color = newColor;
+    
+    saveData();
+    renderPairs();
+}function deletePair(id) { 
     if (confirm('Удалить пару?')) {
         pairs = pairs.filter(p => p.id !== id);
         saveData();
         renderPairs();
     }
 }
+
 
 
 
