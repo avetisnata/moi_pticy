@@ -94,8 +94,8 @@
                 <h3 id="modal-title">Добавить птицу</h3>
                 <form id="bird-form">
                     <input type="text" id="ring" placeholder="Кольцо *" required>
-                    <input type="text" id="name" placeholder="Имя">
-                    <input type="text" id="species" placeholder="Вид (Канарейка, Попугай...)">
+                    <input type="text" id="name" placeholder="Цвет меточного кольца">
+                    <input type="text" id="species" placeholder="Особые приметы">
                     <select id="gender">
                         <option value="">Пол *</option>
                         <option value="♂">Самец</option>
@@ -103,6 +103,7 @@
                     </select>
                     <input type="date" id="birthdate">
                     <input type="text" id="color" placeholder="Цвет/мутация">
+                                    <textarea id="notes" placeholder="Примечания" rows="3"></textarea>
                     <button type="submit">Сохранить</button>
                     <button type="button" onclick="closeModal()">Отмена</button>
                 </form>
@@ -113,5 +114,6 @@
     <script src="app.js"></script>
 </body>
 </html>
+
 
 
