@@ -260,7 +260,10 @@ function renderClutches() {
             <td>${clutch.hatchDate || '-'}</td>
             <td>${clutch.ringNumbers || '-'}</td>
             <td>${clutch.notes || '-'}</td>
-            <td><button class="action-btn btn-edit">✏️</button></td>
+                            <td>
+                    <button class="action-btn btn-edit" onclick="editClutch(${clutch.id})">✏️</button>
+                    <button class="action-btn btn-delete" onclick="deleteClutch(${clutch.id})">🗑️</button>
+                </td>
         `;
     });
 }
@@ -373,6 +376,7 @@ function editPair(id) {
         renderPairs();
     }
 }
+
 
 
 
