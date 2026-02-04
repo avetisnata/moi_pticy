@@ -236,7 +236,7 @@ function addClutch() {
             number: clutchNumber,
                         ringNumbers: ringNumbers,
                         notes: clutchNotes
-pair ? pair.id : 'Удалена'    
+                                };
     const pair = pairs.find(p => p.id == pairId);
     pair.clutches.push(clutch.id);
     clutches.push(clutch);
@@ -374,6 +374,7 @@ function editPair(id) {
         renderPairs();
     }
 }
+
 
 
 
