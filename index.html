@@ -76,12 +76,17 @@
                 <div class="controls">
                     <select id="pair-select-clutch"></select>
                     <button onclick="addClutch()">➕ Новая кладка</button>
+                                    <input type="text" id="clutch-number" placeholder="Номер кладки">
+                                    <input type="date" id="clutch-date" placeholder="Дата кладки">
+                                    <input type="date" id="hatch-date" placeholder="Дата вылупления">
+                                    <input type="text" id="ring-numbers" placeholder="Номера колец (через запятую)">
+                                    <textarea id="clutch-notes" placeholder="Примечания" rows="2"></textarea>
                 </div>
                 <table id="clutches-table">
                     <thead>
                         <tr>
-                            <th>Пара</th><th>Дата кладки</th><th>Яиц</th>
-                            <th>Вылупилось</th><th>Дата вылупления</th><th>Действия</th>
+                            <th>Номер</th><th>Пара</th><th>Дата кладки</th><th>Яиц</th>
+                            <th>Вылупилось</th><th>Дата вылупления</th><th>Дейс<th>Номера колец</th><th>Примечания</th>твия</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -122,6 +127,7 @@
 </body>
 </html>
 345
+
 
 
 
