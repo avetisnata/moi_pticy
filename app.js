@@ -372,10 +372,19 @@ function editPair(id) {
     saveData();
     renderClutches();
 }
+        
+function deleteClutch(id) {
+    if (confirm('Удалить кладку?')) {
+        clutches = clutches.filter(c => c.id !== id);
+        saveData();
+        renderClutches();
+    }
+}
         saveData();
         renderPairs();
     }
 }
+
 
 
 
