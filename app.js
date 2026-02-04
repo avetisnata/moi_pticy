@@ -232,10 +232,11 @@ function addClutch() {
         pairId: parseInt(pairId),
         layDate: clutchDate || new Date().toISOString().split('T')[0],        eggs: 4,
         hatched: 0,
-        hatchDate: hatchDate || ''    };,
+        hatchDate: hatchDate || '' ,
             number: clutchNumber,
                         ringNumbers: ringNumbers,
                         notes: clutchNotes
+                                };
     
     const pair = pairs.find(p => p.id == pairId);
     pair.clutches.push(clutch.id);
@@ -374,6 +375,7 @@ function editPair(id) {
         renderPairs();
     }
 }
+
 
 
 
