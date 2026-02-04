@@ -120,6 +120,13 @@ tr:hover { background: #f8f9fa; }
     margin-left: 5px;
 }
 
+/* Узкая колонка для даты рождения */
+.birthdate-col {
+    width: 100px;
+    white-space: nowrap;
+}
+
+
 
 
 
