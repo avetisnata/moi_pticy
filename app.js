@@ -22,6 +22,21 @@ function setupEventListeners() {
         });
     });
     
+    // Обработчики для улучшенного поиска
+    const searchInput = document.getElementById('bird-search');
+    const clearBtn = document.getElementById('clear-search');
+    
+    searchInput.addEventListener('input', function() {
+        clearBtn.style.display = this.value ? 'block' : 'none';
+        renderBirds();
+    });
+    
+    clearBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        renderBirds();
+    });
+    
     document.getElementById('bird-search').addEventListener('input', renderBirds);
     document.getElementById('bird-form').addEventListener('submit', saveBird);
 }
@@ -112,6 +127,19 @@ function renderBirds() {
                 <button class="action-btn btn-delete" onclick="deleteBird(${bird.id})">🗑️</button>
             </td>
         `;
+            
+    // Обновление счётчика результатов
+    const filteredCount = birds.filter(bird =>
+        bird.ring.toLowerCase().includes(search) ||
+        bird.name.toLowerCase().includes(search)
+    ).length;
+    
+    const resultsDiv = document.getElementById('search-results');
+    if (search) {
+        resultsDiv.textContent = `Найдено: ${filteredCount} из ${birds.length}`;
+    } else {
+        resultsDiv.textContent = '';
+    }
     });
 }
 
@@ -298,6 +326,7 @@ function deletePair(id) {
         renderPairs();
     }
 }
+
 
 
 
