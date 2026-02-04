@@ -31,7 +31,12 @@
             <!-- Вкладка Птицы -->
             <div id="birds" class="tab-content active">
                 <div class="controls">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
                     <input type="text" id="bird-search" placeholder="Поиск по кольцу/имени">
+                    <button id="clear-search" class="clear-btn" style="display:none;">✕</button>
+                </div>
+                <div id="search-results" class="search-results"></div>
                     <button onclick="addBird()">➕ Добавить птицу</button>
                     <button onclick="exportData('csv')">📥 Экспорт CSV</button>
                 </div>
@@ -115,5 +120,6 @@
 </body>
 </html>
 3
+
 
 
