@@ -217,6 +217,11 @@ function updateDropdowns() {
 // ===== КЛАДКИ =====
 function addClutch() {
     const pairId = document.getElementById('pair-select-clutch').value;
+        const clutchNumber = document.getElementById('clutch-number').value;
+        const clutchDate = document.getElementById('clutch-date').value;
+        const hatchDate = document.getElementById('hatch-date').value;
+        const ringNumbers = document.getElementById('ring-numbers').value;
+        const clutchNotes = document.getElementById('clutch-notes').value;
     if (!pairId) {
         alert('Выберите пару!');
         return;
@@ -225,11 +230,12 @@ function addClutch() {
     const clutch = {
         id: Date.now(),
         pairId: parseInt(pairId),
-        layDate: new Date().toISOString().split('T')[0],
-        eggs: 4,
+        layDate: clutchDate || new Date().toISOString().split('T')[0],        eggs: 4,
         hatched: 0,
-        hatchDate: ''
-    };
+        hatchDate: hatchDate || ''    };,
+            number: clutchNumber,
+                        ringNumbers: ringNumbers,
+                        notes: clutchNotes
     
     const pair = pairs.find(p => p.id == pairId);
     pair.clutches.push(clutch.id);
@@ -247,16 +253,19 @@ function renderClutches() {
         const pair = pairs.find(p => p.id === clutch.pairId);
         const row = tbody.insertRow();
         row.innerHTML = `
-            <td>${pair ? pair.id : 'Удалена'}</td>
+<td>${clutch.number || '-'}</td>
+                        <td>${pair ? pair.id : 'Удалена'}</td>
             <td>${clutch.layDate}</td>
             <td>${clutch.eggs}</td>
             <td>${clutch.hatched}</td>
             <td>${clutch.hatchDate || '-'}</td>
+            <td>${clutch.ringNumbers || '-'}</td>
+            <td>${clutch.notes || '-'}</td>
             <td><button class="action-btn btn-edit">✏️</button></td>
         `;
     });
 }
-
+ onclick="editClutch(${clutch.id})"
 // ===== КАЛЕНДАРЬ =====
 function renderCalendar() {
     const grid = document.getElementById('calendar-grid');
@@ -341,10 +350,31 @@ function editPair(id) {
 }function deletePair(id) { 
     if (confirm('Удалить пару?')) {
         pairs = pairs.filter(p => p.id !== id);
+
+        function editClutch(id) {
+    const clutch = clutches.find(c => c.id === id);
+    if (!clutch) return;
+    
+    const newNumber = prompt('Номер кладки:', clutch.number || '');
+    const newDate = prompt('Дата кладки (YYYY-MM-DD):', clutch.layDate || '');
+    const newHatchDate = prompt('Дата вылупления (YYYY-MM-DD):', clutch.hatchDate || '');
+    const newRingNumbers = prompt('Номера колец (через запятую):', clutch.ringNumbers || '');
+    const newNotes = prompt('Примечания:', clutch.notes || '');
+    
+    if (newNumber !== null) clutch.number = newNumber;
+    if (newDate !== null) clutch.layDate = newDate;
+    if (newHatchDate !== null) clutch.hatchDate = newHatchDate;
+    if (newRingNumbers !== null) clutch.ringNumbers = newRingNumbers;
+    if (newNotes !== null) clutch.notes = newNotes;
+    
+    saveData();
+    renderClutches();
+}
         saveData();
         renderPairs();
     }
 }
+
 
 
 
