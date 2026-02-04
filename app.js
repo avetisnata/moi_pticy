@@ -115,16 +115,16 @@ function renderBirds() {
         bird.name.toLowerCase().includes(search)
     ).forEach(bird => {
         const row = tbody.insertRow();
-        row.innerHTML = `
-            <td>${bird.ring}</td>
-            <td>${bird.name || '-'}</td>
-            <td>${bird.species || '-'}</td>
-            <td>${bird.gender || '-'}</td>
-            <td>${bird.birthdate ? new Date(bird.birthdate).toLocaleDateString('ru-RU') : '-'}</td>
-            <td class="status-${bird.status}">${bird.status === 'active' ? 'Активна' : 'Неактивна'}</td>
-            <td>
-                <button class="action-btn btn-edit" onclick="editBird(${bird.id})">✏️</button>
-                <button class="action-btn btn-delete" onclick="deleteBird(${bird.id})">🗑️</button>
+        row.row.innerHTML = `
+                <td>${bird.ring}</td>
+                <td>${bird.name || '-'}</td>
+                <td>${bird.gender || '-'}</td>
+                <td class="birthdate-col">${bird.birthdate ? new Date(bird.birthdate).toLocaleDateString('ru-RU') : '-'}</td>
+                <td>${bird.color || '-'}</td>
+                <td>${bird.notes || '-'}</td>
+                <td>
+                    <button class="action-btn btn-edit" onclick="editBird(${bird.id})">✏️</button>
+                    <button class="action-btn btn-delete" onclick="deleteBird(${bird.id})">🗑️</button>
             </td>
         `;
             
@@ -326,6 +326,7 @@ function deletePair(id) {
         renderPairs();
     }
 }
+
 
 
 
