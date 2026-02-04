@@ -197,8 +197,7 @@ function renderPairs() {
         `;
     });
     document.getElementById('pair-select-clutch').innerHTML = pairs.map(p => 
-        `<option value="${p.id}">Пара ${p.id}</option>`
-    ).join('');
+        `<option value="${p.id}">Пара ${p.number || p.id}</option>`    ).join('');
 }
 
 function updateDropdowns() {
@@ -374,6 +373,7 @@ function editPair(id) {
         renderPairs();
     }
 }
+
 
 
 
