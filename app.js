@@ -128,7 +128,9 @@ function renderBirds() {
             </td>
         `;
             
-    // Обновление счётчика результатов
+    });
+
+        // Обновление счётчика результатов
     const filteredCount = birds.filter(bird =>
         bird.ring.toLowerCase().includes(search) ||
         bird.name.toLowerCase().includes(search)
@@ -140,7 +142,7 @@ function renderBirds() {
     } else {
         resultsDiv.textContent = '';
     }
-    });
+
 }
 
 // ===== ПАРЫ =====
@@ -326,6 +328,7 @@ function deletePair(id) {
         renderPairs();
     }
 }
+
 
 
 
