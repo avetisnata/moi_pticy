@@ -69,6 +69,19 @@ tr:hover { background: #f8f9fa; }
 .search-icon {
     position: absolute;
     left: 15px;
+    
+    /* Более компактные вкладки на мобильных */
+    .tabs {
+        padding: 3px;
+        margin-bottom: 15px;
+        gap: 5px;
+    }
+    
+    .tab {
+        padding: 10px 12px;
+        font-size: 0.9em;
+        border-radius: 8px;
+    }
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2em;
@@ -106,6 +119,7 @@ tr:hover { background: #f8f9fa; }
     margin-top: 5px;
     margin-left: 5px;
 }
+
 
 
 
