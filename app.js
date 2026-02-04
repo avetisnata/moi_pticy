@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderBirds();
     renderPairs();
     renderClutches();
-    renderCalendar();
+    //     renderCalendar();
     setupEventListeners();
     updateDropdowns();
 });
@@ -298,5 +298,6 @@ function deletePair(id) {
         renderPairs();
     }
 }
+
 
 
