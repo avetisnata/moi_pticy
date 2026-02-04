@@ -115,7 +115,7 @@ function renderBirds() {
         bird.name.toLowerCase().includes(search)
     ).forEach(bird => {
         const row = tbody.insertRow();
-        row.row.innerHTML = `
+        row.innerHTML = `
                 <td>${bird.ring}</td>
                 <td>${bird.name || '-'}</td>
                 <td>${bird.gender || '-'}</td>
@@ -326,6 +326,7 @@ function deletePair(id) {
         renderPairs();
     }
 }
+
 
 
 
