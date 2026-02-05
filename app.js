@@ -266,6 +266,7 @@ function renderClutches() {
                 </td>
         `;
     });
+            console.log('deleteClutch called with id:', id, 'clutches before:', clutches);
 }
  onclick="editClutch(${clutch.id})"
 // ===== КАЛЕНДАРЬ =====
@@ -514,6 +515,20 @@ document.getElementById('clutch-form')?.addEventListener('submit', function(e) {
     e.preventDefault();
     saveClutch();
 });
+
+// Перезаписываем функцию deleteClutch для гарантии работы
+function deleteClutch(id) {
+    console.log('deleteClutch вызвана с id:', id);
+    if (confirm('Удалить кладку?')) {
+        console.log('Подтверждено удаление');
+        clutches = clutches.filter(c => c.id != id); // нестрогое сравнение
+        localStorage.setItem('clutches', JSON.stringify(clutches));
+        renderClutches();
+        updateStats();
+        console.log('Кладка удалена, список обновлен');
+    }
+}
+
 
 
 
