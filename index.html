@@ -75,19 +75,19 @@
             <div id="clutches" class="tab-content">
                 <div class="controls">
                     <select id="pair-select-clutch"></select>
-                    <button onclick="addClutch()">➕ Новая кладка</button>
-                                    <input type="text" id="clutch-number" placeholder="Номер кладки">
-                                    <input type="date" id="clutch-date" placeholder="Дата кладки">
-                                    <input type="date" id="hatch-date" placeholder="Дата вылупления">
-                                    <input type="text" id="ring-numbers" placeholder="Номера колец (через запятую)">
-                                    <textarea id="clutch-notes" placeholder="Примечания" rows="2"></textarea>
+                                    <button onclick="openClutchModalForNew()">➕ Новая кладка</button>
                 </div>
                 <table id="clutches-table">
                     <thead>
                         <tr>
-                            <th>Номер</th><th>Пара</th><th>Дата кладки</th><th>Яиц</th>
-                            <th>Вылупилось</th><th>Дата вылупления</th><th>Дейс<th>Номера колец</th><th>Примечания</th>твия</th>
-                        </tr>
+                                <th>Номер пары</th>
+                                <th>Номер кладки</th>
+                                <th>Количество яиц</th>
+                                <th>Дата кладки</th>
+                                <th>Дата вылупления</th>
+                                <th>Номера колец</th>
+                                <th>Примечания</th>
+                                <th>Действия</th>                        </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
@@ -123,10 +123,43 @@
         </div>
     </div>
 
+            <!-- Модальное окно: Добавить / Редактировать кладку -->
+        <div id="clutch-modal" class="modal">
+            <div class="modal-content">
+                <h3 id="clutch-modal-title">Добавить кладку</h3>
+                <form id="clutch-form">
+                    <label for="clutch-pair-number">Номер пары</label>
+                    <input type="text" id="clutch-pair-number" placeholder="Номер пары">
+                    
+                    <label for="clutch-number-input">Номер кладки</label>
+                    <input type="text" id="clutch-number-input" placeholder="Номер кладки">
+                    
+                    <label for="clutch-eggs-count">Количество яиц</label>
+                    <input type="number" id="clutch-eggs-count" min="0" placeholder="Количество яиц">
+                    
+                    <label for="clutch-date-lay">Дата кладки</label>
+                    <input type="date" id="clutch-date-lay">
+                    
+                    <label for="clutch-date-hatch">Дата вылупления</label>
+                    <input type="date" id="clutch-date-hatch">
+                    
+                    <label for="clutch-ring-numbers">Номера колец</label>
+                    <input type="text" id="clutch-ring-numbers" placeholder="Номера колец (через запятую)">
+                    
+                    <label for="clutch-notes-modal">Примечания</label>
+                    <textarea id="clutch-notes-modal" rows="3" placeholder="Примечания"></textarea>
+
+                    <button type="submit">Сохранить</button>
+                    <button type="button" onclick="closeClutchModal()">Отмена</button>
+                </form>
+            </div>
+        </div>
+
     <script src="app.js?v=2"></script>
 </body>
 </html>
 345
+
 
 
 
