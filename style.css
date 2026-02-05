@@ -126,6 +126,38 @@ tr:hover { background: #f8f9fa; }
     white-space: nowrap;
 }
 
+/* Компактный стиль для модального окна кладок */
+#clutch-modal .modal-content {
+    padding: 15px;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+#clutch-modal .modal-content input,
+#clutch-modal .modal-content select,
+#clutch-modal .modal-content textarea {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+#clutch-modal .modal-content label {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+}
+
+#clutch-modal .modal-content h2 {
+    font-size: 1.3em;
+    margin-bottom: 12px;
+}
+
+#clutch-modal .modal-content .controls {
+    margin-top: 12px;
+    gap: 10px;
+}
+
+
 
 
 
