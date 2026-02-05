@@ -394,10 +394,15 @@ function openClutchModalForNew() {
     document.getElementById('clutch-modal-title').textContent = 'Добавить кладку';
 
     // Автоподстановка номера пары из select
+    // Автоподстановка номера пары из select
     const select = document.getElementById('pair-select-clutch');
-    const selectedPairNumber = select && select.value ? select.value : '';
-    document.getElementById('clutch-pair-number').value = selectedPairNumber;
-
+    const selectedPairId = select && select.value ? select.value : '';
+    let pairNumber = '';
+    if (selectedPairId) {
+        const pair = pairs.find(p => p.id == selectedPairId);
+        pairNumber = pair ? (pair.number || '') : '';
+    }
+    document.getElementById('clutch-pair-number').value = pairNumber;
     document.getElementById('clutch-number-input').value = '';
     document.getElementById('clutch-eggs-count').value = '';
     document.getElementById('clutch-date-lay').value = '';
@@ -528,6 +533,7 @@ function deleteClutch(id) {
         console.log('Кладка удалена, список обновлен');
     }
 }
+
 
 
 
