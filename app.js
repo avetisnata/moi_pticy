@@ -385,6 +385,137 @@ function deleteClutch(id) {
     }
 }
 
+// ===== Кладки =====
+let editingClutchId = null;
+
+function openClutchModalForNew() {
+    editingClutchId = null;
+    document.getElementById('clutch-modal-title').textContent = 'Добавить кладку';
+
+    // Автоподстановка номера пары из select
+    const select = document.getElementById('pair-select-clutch');
+    const selectedPairNumber = select && select.value ? select.value : '';
+    document.getElementById('clutch-pair-number').value = selectedPairNumber;
+
+    document.getElementById('clutch-number-input').value = '';
+    document.getElementById('clutch-eggs-count').value = '';
+    document.getElementById('clutch-date-lay').value = '';
+    document.getElementById('clutch-date-hatch').value = '';
+    document.getElementById('clutch-ring-numbers').value = '';
+    document.getElementById('clutch-notes-modal').value = '';
+
+    openClutchModal();
+}
+
+function openClutchModal() {
+    document.getElementById('clutch-modal').classList.add('active');
+}
+
+function closeClutchModal() {
+    document.getElementById('clutch-modal').classList.remove('active');
+}
+
+function saveClutch() {
+    const pairNumber = document.getElementById('clutch-pair-number').value.trim();
+    const clutchNumber = document.getElementById('clutch-number-input').value.trim();
+    const eggsCount = document.getElementById('clutch-eggs-count').value.trim();
+    const layDate = document.getElementById('clutch-date-lay').value;
+    const hatchDate = document.getElementById('clutch-date-hatch').value;
+    const rings = document.getElementById('clutch-ring-numbers').value.trim();
+    const notes = document.getElementById('clutch-notes-modal').value.trim();
+
+    if (!pairNumber || !clutchNumber) {
+        alert('Укажите номер пары и номер кладки');
+        return;
+    }
+
+    if (editingClutchId) {
+        // Редактирование существующей
+        const idx = clutches.findIndex(c => c.id === editingClutchId);
+        if (idx !== -1) {
+            clutches[idx] = {
+                ...clutches[idx],
+                pairNumber,
+                clutchNumber,
+                eggsCount,
+                layDate,
+                hatchDate,
+                rings,
+                notes
+            };
+        }
+    } else {
+        // Новая кладка
+        const newClutch = {
+            id: Date.now(),
+            pairNumber,
+            clutchNumber,
+            eggsCount,
+            layDate,
+            hatchDate,
+            rings,
+            notes
+        };
+        clutches.push(newClutch);
+    }
+
+    localStorage.setItem('clutches', JSON.stringify(clutches));
+    renderClutches();
+    closeClutchModal();
+    updateStats();
+}
+
+function renderClutches() {
+    const tbody = document.getElementById('clutches-table')?.querySelector('tbody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    clutches.forEach(c => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${c.pairNumber}</td>
+            <td>${c.clutchNumber}</td>
+            <td>${c.eggsCount || ''}</td>
+            <td>${c.layDate || ''}</td>
+            <td>${c.hatchDate || ''}</td>
+            <td>${c.rings || ''}</td>
+            <td>${c.notes || ''}</td>
+            <td>
+                <button class="action-btn btn-edit" onclick="editClutch(${c.id})">Редактировать</button>
+                <button class="action-btn btn-delete" onclick="deleteClutch(${c.id})">Удалить</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+function editClutch(id) {
+    const clutch = clutches.find(c => c.id === id);
+    if (!clutch) return;
+
+    editingClutchId = id;
+    document.getElementById('clutch-modal-title').textContent = 'Редактировать кладку';
+
+    document.getElementById('clutch-pair-number').value = clutch.pairNumber || '';
+    document.getElementById('clutch-number-input').value = clutch.clutchNumber || '';
+    document.getElementById('clutch-eggs-count').value = clutch.eggsCount || '';
+    document.getElementById('clutch-date-lay').value = clutch.layDate || '';
+    document.getElementById('clutch-date-hatch').value = clutch.hatchDate || '';
+    document.getElementById('clutch-ring-numbers').value = clutch.rings || '';
+    document.getElementById('clutch-notes-modal').value = clutch.notes || '';
+
+    openClutchModal();
+}
+
+// Функция deleteClutch уже есть в файле, не дублируем
+
+// Обработка субмита формы
+document.getElementById('clutch-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    saveClutch();
+});
+
+
 
 
 
